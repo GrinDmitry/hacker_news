@@ -28,6 +28,7 @@ class CommentsBloc {
         cache[id] = _repository.fetchItem(id);
         cache[id].then(
           (ItemModel item) {
+            print(item.time);
             item.kids.forEach((kidId) => fetchItemWithComments(kidId));
           },
         );

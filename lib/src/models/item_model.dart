@@ -1,11 +1,12 @@
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class ItemModel {
   final int id;
   final bool deleted;
   final String type;
   final String by;
-  final int time;
+  final String time;
   final String text;
   final bool dead;
   final int parent;
@@ -20,7 +21,7 @@ class ItemModel {
         deleted = parsedJson['deleted'] ?? false,
         type = parsedJson['type'],
         by = parsedJson['by'] ?? '',
-        time = parsedJson['time'],
+        time = _formatTime(parsedJson['time']),
         text = parsedJson['text'] ?? '',
         dead = parsedJson['dead'] ?? false,
         parent = parsedJson['parent'],
@@ -61,5 +62,10 @@ class ItemModel {
       "deleted": deleted ? 1 : 0,
       "kids": jsonEncode(kids),
     };
+  }
+
+  static _formatTime(int timestamp) {
+    final date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+    return DateFormat.jm().add_MMMd().format(date);
   }
 }

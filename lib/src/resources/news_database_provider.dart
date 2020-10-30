@@ -15,7 +15,7 @@ class NewsDbProvider implements Source, Cache {
 
   void init() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    final path = join(documentsDirectory.path, "items1.db");
+    final path = join(documentsDirectory.path, "items2.db");
 
     db = await openDatabase(
       path,
@@ -28,7 +28,7 @@ class NewsDbProvider implements Source, Cache {
             id INTEGER PRIMARY KEY,
             type TEXT,
             by TEXT,
-            time INTEGER,
+            time TEXT,
             text TEXT,
             parent INTEGER,
             kids BLOB,

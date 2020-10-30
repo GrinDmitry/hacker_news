@@ -4,6 +4,7 @@ import 'dart:async';
 import '../models/item_model.dart';
 import '../widgets/comment.dart';
 import '../widgets/loading_container.dart';
+import 'package:intl/intl.dart';
 
 class NewsDetail extends StatelessWidget {
   final int id;
@@ -15,9 +16,7 @@ class NewsDetail extends StatelessWidget {
     final bloc = CommentsProvider.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Post'),
-      ),
+      appBar: AppBar(title: Text('Article')),
       body: buildBody(bloc),
     );
   }
